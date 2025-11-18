@@ -1,0 +1,207 @@
+Geting Starter with m3u and other formats 
+think of what you want is it on a site,resource go there and channel surfing and forget what you wanted to watch 
+
+watch history is important use trakt 
+
+
+
+
+
+Common user mistake__________________________________________
+using smart tv apps most dont have fans inside better to fry a cheap tv stick than your tv and your tv will last longer 
+using ibo player or other apps from untrusted sources with vulnerability/backdoord 
+many great apps in .apk format
+
+
+trying to use vlc to open 20k ch just dont use 500 max
+
+
+not saving m3u links file to .m3u  
+
+Basic Structure of an M3U Playlist
+
+    Header Line:
+        The very first line must be:
+        #EXTM3U
+        This indicates that the file is an extended M3U playlist, allowing for additional metadata tags.
+
+    Media Entries:
+        Each media entry typically consists of two lines:
+            #EXTINF line: Provides metadata about the media (duration, title, etc.)
+            URL or file path: Points to the media stream or file.
+
+Example of a Basic M3U Playlist
+
+          
+
+#EXTM3U
+#EXTINF:123,Sample Artist - Sample Track
+http://example.com/stream1.ts
+#EXTINF:210,Another Artist - Another Track
+http://example.com/stream2.ts
+
+      
+
+Explanation:
+
+    #EXTINF:duration,Title:
+        duration is in seconds (use -1 if duration is unknown).
+        Title is the name of the track or stream.
+    The URL following the #EXTINF line points to the media source.
+
+Additional Tips:
+
+    Comments: Lines starting with # are comments or metadata. Anything else is considered media URL.
+    Encoding: Save the playlist as UTF-8 for compatibility.
+    Paths: Use absolute URLs or relative paths, but absolute URLs are preferred for online streams.
+
+
+
+
+FFmpeg
+Command-line tool for streaming, converting,testing and encoding video streams.
+
+EPG Management
+
+XMLTV Editor
+        Create and edit EPG (Electronic Program Guide) files.
+
+WebGrab+Plus
+        Fetches EPG data from various sources automatically.
+
+Online Resources & Repositories
+
+GitHub
+Find open-source IPTV apps and guides how to (;
+
+
+
+
+
+
+
+
+
+
+
+
+1. Extended Metadata (#EXTINF tags):
+You can include additional metadata to enhance your playlist:
+#EXTINF:duration,Artist - Title
+#EXTINF:-1,Artist - Title (Unknown duration)
+#EXTINF:123 tvg-id="channel1" radio="true" tvg-name="Channel 1" group-title="News",Channel 1
+ -1 duration: Use -1 if the duration is unknown or streaming is live.
+tvg-id, tvg-name, group-title, radio: Common attributes for IPTV playlists, especially for EPG (Electronic Program Guide) integration.
+
+2. Adding Electronic Program Guide (EPG) Data:
+
+Attributes like tvg-id, tvg-logo, tvg-name, group-title are used to associate channels with EPG data and logos:
+
+          
+
+#EXTINF:-1 tvg-id="channel1" tvg-name="Channel 1" tvg-logo="http://logo.url/logo.png" group-title="News",Channel 1
+http://streamurl.com/stream
+
+      
+
+3. Multiple Streams for a Single Channel some tv apps 1. Extended Metadata (#EXTINF tags):
+
+You can include additional metadata to enhance your playlist:
+
+          
+
+#EXTINF:duration,Artist - Title
+#EXTINF:-1,Artist - Title (Unknown duration)
+#EXTINF:123 tvg-id="channel1" radio="true" tvg-name="Channel 1" group-title="News",Channel 1
+
+      
+
+    -1 duration: Use -1 if the duration is unknown or streaming is live.
+    tvg-id, tvg-name, group-title, radio: Common attributes for IPTV playlists, especially for EPG (Electronic Program Guide) integration.
+
+2. Adding Electronic Program Guide (EPG) Data:
+
+Attributes like tvg-id, tvg-logo, tvg-name, group-title are used to associate channels with EPG data and logos:
+
+          
+
+#EXTINF:-1 tvg-id="channel1" tvg-name="Channel 1" tvg-logo="http://logo.url/logo.png" group-title="News",Channel 1
+http://streamurl.com/stream
+
+      
+
+3. Multiple Streams for a Single Channel:
+
+You can include multiple links for a channel to switch streams:
+
+          
+
+#EXTINF:-1,Channel Name (Main)
+http://mainstream.com/stream.m3u8
+#EXTINF:-1,Channel Name (Backup)
+http://backupstream.com/stream.m3u8
+
+      
+
+4. Conditional Playlists:
+
+Create playlists with different qualities or languages, organized with group-title:
+
+          
+
+#EXTINF:-1,Movie Stream - HD
+http://stream.com/movie_hd.m3u8
+#EXTINF:-1,Movie Stream - SD
+http://stream.com/movie_sd.m3u8
+
+      
+
+5. Multiple Playlist Files:
+
+You can reference other playlists within a playlist for modularity:
+
+          
+
+#EXTINF:-1,Sub-Playlist
+http://example.com/subplaylist.m3u channels if the name or tvid are the same allowing you to switch and see 
+
+You can include multiple links for a channel to switch streams:
+
+#EXTINF:-1,Channel Name (Main)
+http://mainstream.com/stream.m3u8
+#EXTINF:-1,Channel Name (Backup)
+http://backupstream.com/stream.m3u8
+
+      
+
+4. Conditional Playlists:
+
+Create playlists with different qualities or languages, organized with group-title:
+
+          
+
+#EXTINF:-1,Movie Stream - HD
+http://stream.com/movie_hd.m3u8
+#EXTINF:-1,Movie Stream - SD
+http://stream.com/movie_sd.m3u8
+
+      
+
+5. Multiple Playlist Files:
+
+You can reference other playlists within a playlist for modularity:
+
+          
+
+#EXTINF:-1,Sub-Playlist
+http://example.com/subplaylist.m3u
+
+
+
+
+
+
+
+
+
+
